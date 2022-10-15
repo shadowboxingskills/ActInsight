@@ -13,7 +13,7 @@ Watch the project introduction <a href="https://youtu.be/wrV9EJzssGc" target="_b
 
 <div align="center">
     <a href="https://youtu.be/wrV9EJzssGc" target="_blank">
-    <img border="0" alt="ActInsight intro video" src="intro_video.jpg" width="auto" height="350">
+    <img border="0" alt="ActInsight intro video" src="intro_video.jpg" width="100%" height="auto">
     </a>
 </div>
 <br/><br/>
