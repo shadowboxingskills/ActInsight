@@ -9,17 +9,16 @@
 <br/>
 
 Watch the project introduction <a href="https://youtu.be/wrV9EJzssGc" target="_blank">video</a>
-
-Visit the ActInsight <a href="https://actinsight.org" target="_blank">website</a>
 <br/><br/>
 
 <div align="center">
     <a href="https://youtu.be/wrV9EJzssGc" target="_blank">
-    <img border="0" alt="ActInsight video" src="ActInsight_logo.png" width="auto" height="300">
+    <img border="0" alt="ActInsight intro video" src="intro_video.jpg" width="auto" height="350">
     </a>
 </div>
-
 <br/><br/>
+
+Visit the ActInsight <a href="https://actinsight.org" target="_blank">website</a><br/><br/>
 
 ## Table of Contents
 
