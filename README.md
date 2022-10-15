@@ -1,7 +1,7 @@
 <h1 align="center" style="border-bottom: none">ActInsight</h1>
 <p align="center">
   <a href="https://actinsight.org" target="_blank">
-    <img border="0" alt="ActInsight" src="ActInsight_logo.png" width="auto" height="300">
+    <img border="0" alt="ActInsight" src="ActInsight_logo.png" width="auto" height="280">
   </a>
 </p>
 <h2 align="center">Better Insights into Collective Climate Actions</h2>
