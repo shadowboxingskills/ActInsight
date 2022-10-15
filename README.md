@@ -4,7 +4,7 @@
     <img border="0" alt="ActInsight" src="ActInsight_logo.png" width="auto" height="280">
   </a>
 </p>
-<h2 align="center">Better Insights into Collective Climate Actions</h2>
+<h2 align="center" style="border-bottom: none">Better Insights into Collective Climate Actions</h2>
 <hr/>
 <br/>
 
