@@ -1,0 +1,17 @@
+{
+  "name": "actinsight",
+  "short_name": "ActInsight",
+  "theme_color": "#6750a4",
+  "background_color": "#fafafa",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "https://actinsight.org",
+  "icons": [
+    {
+      "src": "assets/img/actinsight_logo.png",
+      "sizes": "1435x1435",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Why & How</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div id="why-how" class="ion-padding ion-margin ion-text-center">
+          <strong>Why</strong>
+          <p>
+            <br />
+            The currently fragmented, insufficient and incompatible sources
+            building the climate data framework remain a critical threat to a
+            successful outcome of the 2023 Global Stocktake for the Paris
+            Agreement.<br /><br />
+          </p>
+          <p>
+            While we observe an increasing amount of participation - effective
+            ways of connecting, visualizing and analysing actors patterns and
+            impact, within the overall climate initiatives, remain limited.
+          </p>
+        </div>
+        <div class="ion-padding ion-margin"></div>
+        <div id="why-how" class="ion-padding ion-margin ion-text-center">
+          <strong>How</strong>
+          <p>
+            <br />
+            ActInsight contributes to the collective efforts to integrate,
+            analyse and visualize data across actors at all levels, businesses
+            and civil societies, and to understand their contribution and impact
+            within the various initiatives.<br /><br />
+          </p>
+          <p class="ion-padding-bottom">
+            Please follow our quick tour to discover key features and learn how
+            this platform helps you gain insights and navigate your challenges.
+          </p>
+          <div class="ion-padding-top ion-margin-top">
+            <ion-button
+              shape="round"
+              [disabled]="!ds.isDesktop"
+              (click)="ds.startTour()"
+              ><ion-icon slot="start" name="map-outline"></ion-icon>Start Quick
+              Tour</ion-button
+            >
+            <p *ngIf="!ds.isDesktop" muted class="ion-padding-top">
+              Please use a device with larger screen (laptop/desktop) to view
+              the tour properly. Thank you
+            </p>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,126 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Data Sharing</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="intro" class="ion-padding ion-margin ion-text-center">
+    <strong>Data-Sharing Live API</strong>
+    <p>
+      <br />
+      An integrated approach to climate data collaboration & interoperability
+    </p>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col
+        ><div
+          joyrideStep="sqlQueryStep"
+          [title]="ds.jrStepTitle[9]"
+          [text]="ds.jrStepText[9]"
+          stepPosition="bottom"
+        >
+          <div class="ion-padding-vertical ion-margin-top">
+            <ngx-codemirror
+              [(ngModel)]="cmContent"
+              [options]="cmOptions"
+              (ngModelChange)="onCodeMirrorValueChanged($event)"
+            ></ngx-codemirror>
+          </div>
+
+          <div class="ion-padding-botton ion-margin-bottom ion-text-center">
+            <ion-button
+              [disabled]="!cmContent || cmContent.length < 6 || !(cmContent.includes('SELECT') || cmContent.includes('select'))"
+              [href]="queryCallUrl"
+              target="_blank"
+              download="results.csv"
+              ><ion-icon slot="start" name="color-wand-outline"></ion-icon>Run
+              Query</ion-button
+            >
+            <ion-button (click)="onRefreshQuery()"
+              ><ion-icon slot="icon-only" name="reload-outline"></ion-icon
+            ></ion-button>
+            <ion-button
+              href="https://actinsight.org/assets/schema/ActInsight_API_quick_start.pdf"
+              target="_blank"
+              download="ActInsight_API_quick_start.pdf"
+              joyrideStep="sqlQuickInstructionsStep"
+              [title]="ds.jrStepTitle[10]"
+              [text]="ds.jrStepText[10]"
+              stepPosition="bottom"
+              ><ion-icon slot="start" name="book-outline"></ion-icon
+              >Documentation</ion-button
+            >
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div
+    class="ion-padding-vertical ion-margin-vertical ion-text-center"
+    joyrideStep="downloadSchemaStep"
+    [title]="ds.jrStepTitle[11]"
+    [text]="ds.jrStepText[11]"
+    stepPosition="bottom"
+    (done)="ds.endTour()"
+  >
+    <ion-button (click)="toggleSchemaVisibility()"
+      ><ion-icon
+        *ngIf="!isSchemaVisible"
+        slot="start"
+        name="chevron-forward-outline"
+      ></ion-icon
+      ><ion-icon
+        *ngIf="isSchemaVisible"
+        slot="start"
+        name="chevron-down-outline"
+      ></ion-icon
+      ><span *ngIf="!isSchemaVisible">Show Schema</span
+      ><span *ngIf="isSchemaVisible">Hide Schema</span></ion-button
+    >
+    <ion-button
+      href="https://actinsight.org/assets/schema/schema.pdf"
+      target="_blank"
+      download="Schema.pdf"
+      ><ion-icon slot="start" name="cloud-download-outline"></ion-icon>Download
+      Schema</ion-button
+    >
+  </div>
+  <div
+    *ngIf="isSchemaVisible"
+    class="ion-padding-vertical ion-margin-vertical ion-text-center"
+  >
+    <ul class="ion-padding-bottom ion-text-start">
+      <li>
+        <b
+          >Schema designed & maintained by
+          <a href="https://www.openearth.org/" target="_blank">OpenEarth</a></b
+        >
+      </li>
+      <li>
+        <b
+          >OpenClimate schema source:
+          <a
+            href="https://github.com/Open-Earth-Foundation/OpenClimate-Schema"
+            target="_blank"
+            >GitHub</a
+          ></b
+        >
+      </li>
+      <li>
+        <b>Last specification update by OpenEarth Team</b>: October
+        11<sup>th</sup>, 2022
+      </li>
+      <li>
+        <b>Last updated on ValueGrid server</b>: October 11<sup>th</sup>, 2022
+      </li>
+    </ul>
+    <img class="db-schema ion-padding" src="assets/schema/graphviz.svg" />
+  </div>
+</ion-content>

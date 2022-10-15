@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Welcome</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ng-lottie
+    containerClass="moving-box"
+    [styles]="styles"
+    [options]="options"
+  ></ng-lottie>
+
+  <div id="container">
+    <strong>ActInsight</strong>
+    <p>{{ tagLine }}</p>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-padding-bottom">
+  <div class="ion-text-center">
+    <ion-button
+      shape="round"
+      joyrideStep="startStep"
+      [title]="ds.jrStepTitle[0]"
+      [text]="ds.jrStepText[0]"
+      stepPosition="left"
+      [routerLink]="['/insights']"
+      ><ion-icon slot="start" name="play-outline"></ion-icon>Start
+      Now</ion-button
+    >
+    <span *ngIf="ds.isDesktop">&nbsp;</span>
+    <ion-button *ngIf="ds.isDesktop" shape="round" (click)="ds.startTour()"
+      ><ion-icon slot="start" name="map-outline"></ion-icon>Quick
+      Tour</ion-button
+    >
+  </div>
+</ion-footer>

@@ -1,0 +1,221 @@
+<ion-app>
+  <ion-menu contentId="main-content" type="overlay" side="start">
+    <ion-content>
+      <ion-list id="main-list">
+        <ion-list-header>ActInsight</ion-list-header>
+        <ion-note>{{ tagLine }}</ion-note>
+
+        <ion-menu-toggle
+          auto-hide="false"
+          *ngFor="let p of appPages; let i = index"
+        >
+          <ion-item
+            routerDirection="root"
+            [routerLink]="[p.url]"
+            lines="none"
+            detail="false"
+            routerLinkActive="selected"
+          >
+            <ion-icon
+              slot="start"
+              [ios]="p.icon + '-outline'"
+              [md]="p.icon + '-sharp'"
+            ></ion-icon>
+            <ion-label>{{ p.title }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+
+      <ion-list id="secondary-list">
+        <ion-list-header>Useful links</ion-list-header>
+
+        <ion-menu-toggle>
+          <!-- COP27 Climate Datathon -->
+          <ion-item
+            href="https://www.openearth.org/cop27-datathon"
+            target="_blank"
+            lines="none"
+            detail="false"
+          >
+            <ion-icon
+              slot="start"
+              ios="open-outline"
+              md="open-sharp"
+            ></ion-icon>
+            <ion-label>COP27 Climate Datathon</ion-label>
+          </ion-item>
+
+          <!-- DDL -->
+          <ion-item
+            href="http://datadrivenlab.org/"
+            target="_blank"
+            lines="none"
+            detail="false"
+          >
+            <ion-icon
+              slot="start"
+              ios="open-outline"
+              md="open-sharp"
+            ></ion-icon>
+            <ion-label>Data-Driven Lab</ion-label>
+          </ion-item>
+
+          <!-- OpenEarth -->
+          <ion-item
+            href="https://www.openearth.org/"
+            target="_blank"
+            lines="none"
+            detail="false"
+          >
+            <ion-icon
+              slot="start"
+              ios="open-outline"
+              md="open-sharp"
+            ></ion-icon>
+            <ion-label>OpenEarth Foundation</ion-label>
+          </ion-item>
+
+          <!-- NY Climate Week 2022 -->
+          <!-- <ion-item
+            href="https://www.climateweeknyc.org/"
+            target="_blank"
+            lines="none"
+            detail="false"
+          >
+            <ion-icon
+              slot="start"
+              ios="open-outline"
+              md="open-sharp"
+            ></ion-icon>
+            <ion-label>NY Climate Week</ion-label>
+          </ion-item> -->
+
+          <!-- UNFCCC Climate Action -->
+          <ion-item
+            href="https://climateaction.unfccc.int/"
+            target="_blank"
+            lines="none"
+            detail="false"
+          >
+            <ion-icon
+              slot="start"
+              ios="open-outline"
+              md="open-sharp"
+            ></ion-icon>
+            <ion-label>UNFCCC</ion-label>
+          </ion-item>
+
+          <!-- Net Zero Tracker -->
+          <ion-item
+            href="https://zerotracker.net/"
+            target="_blank"
+            lines="none"
+            detail="false"
+          >
+            <ion-icon
+              slot="start"
+              ios="open-outline"
+              md="open-sharp"
+            ></ion-icon>
+            <ion-label>Net Zero Tracker</ion-label>
+          </ion-item>
+
+          <!-- GCoM -->
+          <ion-item
+            href="https://www.globalcovenantofmayors.org/"
+            target="_blank"
+            lines="none"
+            detail="false"
+          >
+            <ion-icon
+              slot="start"
+              ios="open-outline"
+              md="open-sharp"
+            ></ion-icon>
+            <ion-label>Covenant of Mayors</ion-label>
+          </ion-item>
+
+          <!-- ValueGrid -->
+          <ion-item
+            href="https://valuegrid.io/"
+            target="_blank"
+            lines="none"
+            detail="false"
+          >
+            <ion-icon
+              slot="start"
+              ios="open-outline"
+              md="open-sharp"
+            ></ion-icon>
+            <ion-label>ValueGrid</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+
+      <ion-list id="secondary-list">
+        <ion-list-header>Misc</ion-list-header>
+        <ion-menu-toggle>
+          <!-- Quick Tour -->
+          <ion-item
+            button
+            [disabled]="!ds.isDesktop"
+            (click)="ds.startTour()"
+            lines="none"
+            detail="false"
+          >
+            <ion-icon slot="start" ios="map-outline" md="map-sharp"></ion-icon>
+            <ion-label>Quick Tour</ion-label>
+          </ion-item>
+
+          <!-- API doc -->
+          <ion-item
+            href="https://actinsight.org/assets/schema/ActInsight_API_quick_start.pdf"
+            target="_blank"
+            download="ActInsight_API_quick_start.pdf"
+            lines="none"
+            detail="false"
+          >
+            <ion-icon
+              slot="start"
+              ios="book-outline"
+              md="book-sharp"
+            ></ion-icon>
+            <ion-label>API Documentation</ion-label>
+          </ion-item>
+
+          <!-- Privacy policy -->
+          <ion-item
+            href="https://valuegrid.io/privacy"
+            target="_blank"
+            lines="none"
+            detail="false"
+          >
+            <ion-icon
+              slot="start"
+              ios="shield-checkmark-outline"
+              md="shield-checkmark-sharp"
+            ></ion-icon>
+            <ion-label>Privacy</ion-label>
+          </ion-item>
+
+          <!-- OSS Licenses -->
+          <ion-item
+            routerDirection="root"
+            routerLink="licenses"
+            lines="none"
+            detail="false"
+            routerLinkActive="selected"
+          >
+            <ion-icon
+              slot="start"
+              ios="document-text-outline"
+              md="document-text-sharp"
+            ></ion-icon>
+            <ion-label>OSS Licenses</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+</ion-app>

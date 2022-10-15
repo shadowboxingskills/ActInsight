@@ -1,0 +1,10 @@
+datasource_id,name,publisher,published,URL,created,last_updated
+OC_DATASOURCE_1,OpenEarth Foundation,OC_PUBLISHER_1,2022-10-11,https://www.openearth.org/,2022-10-11,2022-10-11
+OC_DATASOURCE_2,OpenClimate Schema,OC_PUBLISHER_1,2022-10-11,https://github.com/Open-Earth-Foundation/OpenClimate-Schema,2022-10-11,2022-10-11
+OC_DATASOURCE_3,Data-Driven Envirolab,OC_PUBLISHER_2,2022-10-11,http://datadrivenlab.org/,2022-10-11,2022-10-11
+OC_DATASOURCE_4,UNFCCC Global Climate Action,OC_PUBLISHER_3,2022-10-11,https://climateaction.unfccc.int/,2022-10-11,2022-10-11
+OC_DATASOURCE_5,Net Zero Tracker,OC_PUBLISHER_4,2022-10-11,https://zerotracker.net/,2022-10-11,2022-10-11
+OC_DATASOURCE_6,ValueGrid,OC_PUBLISHER_5,2022-10-11,https://valuegrid.io,2022-10-11,2022-10-11
+OC_DATASOURCE_7,GLOBAL COVENANT of MAYORS,OC_PUBLISHER_6,2022-10-11,https://www.globalcovenantofmayors.org/,2022-10-11,2022-10-11
+OC_DATASOURCE_8,WikiData,OC_PUBLISHER_7,2022-10-11,https://www.wikidata.org/wiki/Wikidata:Main_Page,2022-10-11,2022-10-11
+OC_DATASOURCE_9,"World Economic Outlook Database, October 2022",OC_PUBLISHER_8,2022-10-11,https://www.imf.org/en/Publications/WEO/weo-database/2022/October/weo-report,2022-10-11,2022-10-11

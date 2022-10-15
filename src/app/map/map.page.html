@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Geo Insights</ion-title>
+    <ion-buttons slot="end">
+      <div class="ion-padding-end">
+        <ion-spinner
+          *ngIf="ds.isDataLoading || isSearching"
+          color="primary"
+          name="circular"
+        ></ion-spinner>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="no-scroll">
+  <div id="container">
+    <strong>Geo Insights</strong>
+    <p>Coming soon...</p>
+  </div>
+</ion-content>

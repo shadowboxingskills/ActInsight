@@ -1,0 +1,286 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button
+        joyrideStep="sideMenuStep"
+        [title]="ds.jrStepTitle[7]"
+        [text]="ds.jrStepText[7]"
+        stepPosition="bottom"
+      ></ion-menu-button>
+    </ion-buttons>
+    <ion-title
+      joyrideStep="statsStep"
+      [title]="ds.jrStepTitle[6]"
+      [text]="ds.jrStepText[6]"
+      stepPosition="bottom"
+      >Action Tracking&nbsp; {{ statsMsg && !ds.smallScreenFlag ? statsMsg :
+      isSearching ? " ✨ searching..." : "" }}
+    </ion-title>
+    <ion-buttons slot="end">
+      <div class="ion-padding-end">
+        <ion-spinner
+          *ngIf="ds.isDataLoading || isSearching"
+          color="primary"
+          name="circular"
+        ></ion-spinner>
+      </div>
+      <ion-button
+        *ngIf="!ds.smallScreenFlag"
+        (click)="toggleSidePanel()"
+        [disabled]="ds.isDataLoading || isSearching"
+        joyrideStep="sidePanelStep"
+        [title]="ds.jrStepTitle[4]"
+        [text]="ds.jrStepText[4]"
+        stepPosition="bottom"
+      >
+        <ion-icon
+          *ngIf="isSidePanelActive"
+          slot="icon-only"
+          name="eye-off-outline"
+        ></ion-icon>
+        <ion-icon
+          *ngIf="!isSidePanelActive"
+          slot="icon-only"
+          name="eye-outline"
+        ></ion-icon>
+      </ion-button>
+      <ion-button
+        (click)="onRefreshPage()"
+        [disabled]="ds.isDataLoading || isSearching"
+        joyrideStep="refreshStep"
+        [title]="ds.jrStepTitle[5]"
+        [text]="ds.jrStepText[5]"
+        stepPosition="bottom"
+      >
+        <ion-icon slot="icon-only" name="reload-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="no-scroll">
+  <ion-fab
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+    joyrideStep="samplesStep"
+    [title]="ds.jrStepTitle[2]"
+    [text]="ds.jrStepText[2]"
+    stepPosition="top"
+  >
+    <ion-fab-button
+      (click)="showQueryExamples()"
+      [disabled]="ds.isDataLoading"
+      title="Show me some examples"
+    >
+      <ion-icon name="bulb"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ng-template #dataLoading>
+    <div id="container">
+      <div class="ion-text-center">
+        <ion-spinner color="primary" name="crescent"></ion-spinner>
+      </div>
+    </div>
+  </ng-template>
+
+  <ion-grid *ngIf="!ds.isDataLoading; else dataLoading">
+    <ion-row *ngIf="isSidePanelActive">
+      <ion-col size="9" class="no-scroll">
+        <div
+          echarts
+          [options]="graphChartOptions"
+          [merge]="graphChartOptions"
+          [autoResize]="true"
+          [theme]="'dark'"
+          style="height: 90vh; overflow: hidden"
+          (chartClick)="onChartClick($event)"
+        ></div>
+      </ion-col>
+      <ion-col size="3" class="scrollable-item">
+        <ion-card *ngIf="sideDeck.length === 0">
+          <img src="assets/img/actinsight_logo_transparent.png" />
+          <ion-card-header>
+            <ion-card-title>No results found</ion-card-title>
+          </ion-card-header>
+          <ion-card-content> Please refine your seach </ion-card-content>
+        </ion-card>
+        <ion-card *ngFor="let item of sideDeck.slice(0, MAX_NB_CARDS_DISPLAY)">
+          <ion-card-header>
+            <ion-card-subtitle color="primary"
+              ><b>{{ item.categoryName }}</b>&nbsp;&nbsp;<span
+                *ngIf="item.launchYr"
+                style="vertical-align: middle"
+                ><ion-badge slot="end">{{ item.launchYr }}</ion-badge></span
+              >&nbsp;<span
+                *ngIf="item.nbParticipants"
+                style="vertical-align: middle"
+                ><ion-badge slot="end"
+                  >{{ item.nbParticipants }} participants</ion-badge
+                ></span
+              ></ion-card-subtitle
+            >
+            <ion-card-title>{{ item.name }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="ion-text-center ion-padding-bottom">
+              <ion-button
+                size="small"
+                fill="clear"
+                (click)="onCardFocus(item.name)"
+              >
+                <ion-icon
+                  *ngIf="!isCardFocusActive"
+                  slot="start"
+                  name="radio-button-off-outline"
+                ></ion-icon>
+                <ion-icon
+                  *ngIf="isCardFocusActive"
+                  slot="start"
+                  name="radio-button-on-outline"
+                ></ion-icon>
+                Focus
+              </ion-button>
+            </div>
+            <div *ngIf="item.sdg" class="ion-padding-bottom">
+              <a
+                *ngFor="let sdg of item.sdg"
+                [href]="'https://en.wikipedia.org/wiki/Sustainable_Development_Goal_' + sdg"
+                target="_blank"
+              >
+                <ion-chip color="success" [outline]="true">{{ sdg }}</ion-chip>
+              </a>
+            </div>
+            {{ item.description }}
+            <div
+              *ngIf="item.countries"
+              class="ion-text-center ion-padding-vertical"
+            >
+              <a
+                *ngFor="let c of item.countries"
+                [href]="'https://en.wikipedia.org/wiki/' + ds.cleanSpecialCharsCc(c.cn)"
+                target="_blank"
+              >
+                <span
+                  *ngIf="c.cc"
+                  [class]="'fi fi-' + c.cc + ' ion-padding-horizontal'"
+                ></span>
+              </a>
+            </div>
+            <span *ngIf="item.leadOrg"
+              ><b>Lead:</b>&nbsp;{{ item.leadOrg }}<br /><br
+            /></span>
+            <div *ngIf="item.initiativeFn" class="ion-padding-bottom">
+              <ion-chip
+                *ngFor="let ifn of item.initiativeFn"
+                color="primary"
+                [outline]="true"
+                >{{ ifn }}</ion-chip
+              >
+            </div>
+            <div *ngIf="item.thematicArea" class="ion-padding-bottom">
+              <ion-chip
+                *ngFor="let ta of item.thematicArea"
+                color="warning"
+                [outline]="true"
+                >{{ ta }}</ion-chip
+              >
+            </div>
+            <span *ngIf="item.climateFocus"
+              ><b>Climate focus:</b>&nbsp;{{ item.climateFocus }}<br /><br
+            /></span>
+            <span *ngIf="item.address"
+              ><b>HQ:</b>&nbsp;{{ item.address }}<br
+            /></span>
+          </ion-card-content>
+          <ion-footer>
+            <ion-row>
+              <ion-col class="ion-text-center">
+                <ion-button
+                  size="small"
+                  fill="clear"
+                  [href]="item.website"
+                  target="_blank"
+                >
+                  <ion-icon slot="start" name="open-outline"></ion-icon>
+                  Open
+                </ion-button>
+              </ion-col>
+              <ion-col class="ion-text-center">
+                <ion-button
+                  size="small"
+                  fill="clear"
+                  [href]="item.unfcccUrl"
+                  target="_blank"
+                >
+                  <ion-icon slot="start" name="open-outline"></ion-icon>
+                  Track
+                </ion-button>
+              </ion-col>
+              <ion-col class="ion-text-center" *ngIf="item.email">
+                <ion-button
+                  size="small"
+                  fill="clear"
+                  [href]="'mailto:' + item.email"
+                  target="_blank"
+                >
+                  <ion-icon slot="start" name="mail-outline"></ion-icon>
+                  Email
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-footer>
+        </ion-card>
+        <ion-card *ngIf="sideDeck.length >  MAX_NB_CARDS_DISPLAY">
+          <img src="assets/img/actinsight_logo_transparent.png" />
+          <ion-card-header>
+            <ion-card-title
+              >+{{ sideDeck.length - MAX_NB_CARDS_DISPLAY }} more results
+              found</ion-card-title
+            >
+          </ion-card-header>
+          <ion-card-content>
+            Please refine your seach to display more details
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="!isSidePanelActive">
+      <ion-col>
+        <div
+          echarts
+          style="height: 90vh; overflow: hidden"
+          joyrideStep="graphStep"
+          [title]="ds.jrStepTitle[3]"
+          [text]="ds.jrStepText[3]"
+          stepPosition="center"
+          [options]="graphChartOptions"
+          [merge]="graphChartOptions"
+          [autoResize]="true"
+          [theme]="'dark'"
+          (chartClick)="onChartClick($event)"
+        ></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer
+  joyrideStep="queryStep"
+  [title]="ds.jrStepTitle[1]"
+  [text]="ds.jrStepText[1]"
+  stepPosition="top"
+>
+  <ion-searchbar
+    color="primary"
+    animated="true"
+    placeholder="Start exploring..."
+    show-clear-button="focus"
+    search-icon="leaf"
+    [disabled]="ds.isDataLoading"
+    [debounce]="debounceDurationMs"
+    (ionChange)="handleQuery($event)"
+    [(ngModel)]="query"
+  ></ion-searchbar>
+</ion-footer>

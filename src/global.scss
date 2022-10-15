@@ -1,0 +1,62 @@
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+// flag icons
+@import "~flag-icons/css/flag-icons.min.css";
+
+// CodeMirror
+@import "node_modules/codemirror/lib/codemirror";
+@import "node_modules/codemirror/theme/material-darker";
+
+.CodeMirror {
+  /* Set height, width, borders, and global font properties here */
+  font-family: monospace;
+  height: 200px;
+  color: black;
+  direction: ltr;
+}
+
+// remove all tooltips for ion-icon
+ion-icon {
+  pointer-events: none;
+}
+
+// splashscreen logo
+.loadscreen {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: calc(50% - 100px);
+  bottom: calc(70% - 100px); // adjusted
+
+  .logo {
+    display: inline-block !important;
+    width: 80px;
+    height: 80px;
+  }
+
+  ion-spinner {
+    transform: scale(2) !important;
+  }
+}
+
+// disable scrolling in ion-content
+.no-scroll {
+  --overflow: hidden;
+}
