@@ -16,6 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
     { title: 'Home', url: 'home', icon: 'home' },
     { title: 'Why & How', url: 'why', icon: 'leaf' },
     { title: 'Action Tracking', url: 'insights', icon: 'share-social' },
+    { title: 'Action Snap', url: 'action-snap', icon: 'camera' },
     { title: 'Geo Insights', url: 'map', icon: 'earth' },
     { title: 'Data Sharing', url: 'data', icon: 'server' },
   ];

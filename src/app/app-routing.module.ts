@@ -22,6 +22,13 @@ const routes: Routes = [
       import('./insights/insights.module').then((m) => m.InsightsPageModule),
   },
   {
+    path: 'action-snap',
+    loadChildren: () =>
+      import('./action-snap/action-snap.module').then(
+        (m) => m.ActionSnapPageModule
+      ),
+  },
+  {
     path: 'map',
     loadChildren: () => import('./map/map.module').then((m) => m.MapPageModule),
   },
