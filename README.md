@@ -60,6 +60,7 @@ Data sources
 - [UNFCCC Climate Action](https://climateaction.unfccc.int/)
 - [Net Zero Tracker](https://zerotracker.net/)
 - [Global Covenant of Mayors](https://www.globalcovenantofmayors.org/)
+- [Regeneration](https://regeneration.org/)
 - [WikiData pySPARK custom queries](https://query.wikidata.org/)
 
 <br/>
