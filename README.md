@@ -18,6 +18,16 @@ Watch the project introduction <a href="https://youtu.be/wrV9EJzssGc" target="_b
 </div>
 <br/><br/>
 
+Watch the new Action Snap feature <a href="https://youtu.be/m_Pfn8N6a_0" target="_blank">video</a>
+<br/><br/>
+
+<div align="center">
+    <a href="https://youtu.be/m_Pfn8N6a_0" target="_blank">
+    <img border="0" alt="Action Snap feature intro video" src="Action_Snap_video.jpg" width="100%" height="auto">
+    </a>
+</div>
+<br/><br/>
+
 Visit the ActInsight <a href="https://actinsight.org" target="_blank">website</a><br/><br/>
 
 ## Table of Contents
@@ -59,8 +69,8 @@ Data sources
 
 - [UNFCCC Climate Action](https://climateaction.unfccc.int/)
 - [Net Zero Tracker](https://zerotracker.net/)
-- [Global Covenant of Mayors](https://www.globalcovenantofmayors.org/)
 - [Regeneration](https://regeneration.org/)
+- [Global Covenant of Mayors](https://www.globalcovenantofmayors.org/)
 - [WikiData pySPARK custom queries](https://query.wikidata.org/)
 
 <br/>
