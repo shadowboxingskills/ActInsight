@@ -78,6 +78,7 @@ Data sources
 ## Documentation
 
 - For an overview of the project, please watch the <a href="https://youtu.be/wrV9EJzssGc" target="_blank">introduction video</a>
+- Overview of the new Action Snap feature in this <a href="https://youtu.be/m_Pfn8N6a_0" target="_blank">video</a>
 - To learn more about the platform's features & navigation, we recommend to follow the interative "quick tour", directly accessible on the <a href="https://actinsight.org" target="_blank">website</a> home page.
 - For the data-sharing API, please refer to the <a href="https://actinsight.org/assets/schema/ActInsight_API_quick_start.pdf" target="_blank">quick-start document</a>, which includes examples for R, Python and the Web.
 
